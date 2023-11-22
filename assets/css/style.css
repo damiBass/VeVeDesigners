@@ -312,13 +312,18 @@ img {
 .logo-slide {
   width: 100%;
   height: 100px;
-  background-color: red;
 }
 
 .main-box.main-bg.ontop {
-  height: 276px;
+  padding-top: 80px;
+  margin-bottom: 75px;
   display: flex;
   align-items: center;
+}
+
+#content-carousel-container-unq-testim {
+  max-width: 400px;
+  margin-left: 0 !important;
 }
 
 .to-out .swiper-container {
@@ -1122,6 +1127,10 @@ img {
 
 .slide-har {
   position: relative;
+}
+
+.slide-har h4 {
+  font-size: 86px !important;
 }
 
 .slide-har.st1 .box {
@@ -2905,6 +2914,31 @@ body.loaded {
 }
 
 /* ====================== [ Start Overlay ] ====================== */
+
+.logo-images {
+  display: flex;
+  align-items: center;
+  max-height: 40px;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  left: 70px;
+  bottom: 0;
+}
+
+.logo-images .logo {
+  width: 40px !important;
+  margin-right: 7px;
+}
+
+.logo-images p {
+  font-weight: 700;
+}
+
+.logo-images span {
+  font-weight: 400 !important;
+}
+
 [data-overlay-dark] {
   position: relative;
 }
@@ -2920,17 +2954,32 @@ body.loaded {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0;
+  top: 80px;
   left: 0;
   z-index: 1;
   pointer-events: none;
+  background: linear-gradient(
+      to left,
+      rgba(62, 62, 62, 0.6),
+      rgba(62, 62, 62, 0)
+    ),
+    url("./../imgs/4dc76b1f3cb0209f6f95b26e15c97ed5.png");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 110%;
+  background-position: 54% 0%;
 }
 
 [data-overlay-dark]:before {
-  background: url("./../imgs/4dc76b1f3cb0209f6f95b26e15c97ed5.png");
-  max-height: 695px;
+  background: linear-gradient(rgba(62, 62, 62, 0), rgba(62, 62, 62, 0)),
+    linear-gradient(to left, rgba(128, 128, 128, 0), rgba(128, 128, 128, 1)),
+    url("./../imgs/4dc76b1f3cb0209f6f95b26e15c97ed5.png");
   background-repeat: no-repeat;
   background-size: cover;
+  filter: grayscale(100%);
+  background-size: 110%;
+  background-position: 54% 0%;
 }
 
 [data-overlay-dark="0"]:before {
@@ -3800,7 +3849,11 @@ body.loaded {
 
 .hero-title h1 {
   font-size: 54px !important;
-  line-height: 65px !important;
+  line-height: 55px !important;
+}
+
+.hero-title .paragraph-hero p {
+  line-height: normal !important;
 }
 
 .first-title-color {
@@ -8928,6 +8981,7 @@ header.in-box {
 .testim-crv .testim-swiper .item {
   padding: 40px 30px;
   border-radius: 20px;
+  max-width: 450px;
 }
 
 .testim-crv.text-dark .item {
