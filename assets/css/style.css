@@ -9927,6 +9927,48 @@ header.in-box {
 }
 
 /* ====================== [ Start Responsive ] ====================== */
+
+@media screen and (max-width: 390px) {
+  .main-box.main-bg.ontop {
+    max-width: 390px !important;
+  }
+
+  .serv-marq.ontop {
+    overflow: hidden;
+  }
+
+  .container-fluid {
+    overflow: hidden !important;
+  }
+
+  .logo-images {
+    left: 15px;
+  }
+
+  [data-overlay-dark]:before {
+    background-size: cover;
+    background-position: 65% 0%;
+  }
+
+  [data-overlay-dark]:before {
+    background-size: cover;
+    background-position: 65% 0%;
+  }
+
+  .row.card-container {
+    flex-wrap: wrap;
+  }
+
+  .card-services {
+    max-width: px;
+  }
+
+  #testimonials {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
 @media screen and (max-width: 1300px) {
   body.home-arch main:after {
     display: none;
