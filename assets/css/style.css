@@ -7684,7 +7684,8 @@ body.inter-center {
 .serv-box .serv-item {
   padding: 60px 40px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  min-height: 392px;
+  min-height: 391px;
+  max-height: 392px;
 }
 
 .serv-box .serv-item .arrow svg {
@@ -9956,7 +9957,6 @@ header.in-box {
   }
 
   .row.card-container {
-    flex-wrap: wrap;
     margin: 0;
   }
 
@@ -10413,6 +10413,9 @@ header.in-box {
 }
 
 @media screen and (max-width: 768px) {
+  .row.card-container {
+    flex-wrap: wrap;
+  }
   .sm-mb10 {
     margin-bottom: 10px;
   }
@@ -10921,8 +10924,8 @@ header.in-box {
     left: 73px;
   }
 
-  .container {
-    max-width: 1140px !important;
+  .row.card-container {
+    flex-wrap: nowrap;
   }
 }
 
