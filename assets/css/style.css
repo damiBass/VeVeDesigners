@@ -9927,16 +9927,21 @@ header.in-box {
   border-radius: 40px;
 }
 
-.container.ontop {
-  overflow: hidden !important;
-}
-
 .container.ontop .row {
   margin-right: 0px !important;
 }
 
 .testim-crv {
   background-color: #d2f053;
+}
+
+.testim-crv {
+  overflow: hidden !important;
+}
+
+.serv-marq.ontop {
+  margin-top: 80px;
+  margin-bottom: 73px;
 }
 /* ====================== [ Start Responsive ] ====================== */
 
@@ -10930,6 +10935,12 @@ header.in-box {
 
   .row.card-container {
     flex-wrap: nowrap;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .container {
+    max-width: 1600px !important;
   }
 }
 
