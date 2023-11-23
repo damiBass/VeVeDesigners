@@ -9927,6 +9927,17 @@ header.in-box {
   border-radius: 40px;
 }
 
+.container.ontop {
+  overflow: hidden !important;
+}
+
+.container.ontop .row {
+  margin-right: 0px !important;
+}
+
+.testim-crv {
+  background-color: #d2f053;
+}
 /* ====================== [ Start Responsive ] ====================== */
 
 @media screen and (min-width: 300px) {
@@ -10070,7 +10081,6 @@ header.in-box {
     transform: none !important;
   }
   .to-out .swiper-container {
-    overflow: hidden;
     -webkit-clip-path: none;
     clip-path: none;
   }
@@ -10910,12 +10920,6 @@ header.in-box {
   }
   .approach-carso .swiper-wrapper .swiper-slide {
     margin: auto;
-  }
-}
-
-@media screen and (min-width: 993px) {
-  .to-out .swiper-container {
-    overflow: hidden;
   }
 }
 
