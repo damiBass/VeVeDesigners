@@ -9928,9 +9928,9 @@ header.in-box {
 
 /* ====================== [ Start Responsive ] ====================== */
 
-@media screen and (max-width: 390px) {
+@media screen and (min-width: 300px) {
   .main-box.main-bg.ontop {
-    max-width: 390px !important;
+    max-width: 100% !important;
   }
 
   .serv-marq.ontop {
@@ -9957,10 +9957,7 @@ header.in-box {
 
   .row.card-container {
     flex-wrap: wrap;
-  }
-
-  .card-services {
-    max-width: px;
+    margin: 0;
   }
 
   #testimonials {
@@ -10910,6 +10907,22 @@ header.in-box {
   }
   .approach-carso .swiper-wrapper .swiper-slide {
     margin: auto;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .to-out .swiper-container {
+    overflow: hidden;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .logo-images {
+    left: 73px;
+  }
+
+  .container {
+    max-width: 1140px !important;
   }
 }
 
