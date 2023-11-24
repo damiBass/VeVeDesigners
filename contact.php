@@ -1,7 +1,7 @@
 <?php
 
 // Configuración
-$from = 'Demo contact form <demo@domain.com>';
+$from = 'Demo contact form <borgognoni.damian@gmail.com>';
 $sendTo = 'Test contact form <borgognoni.damian@gmail.com>';
 $subject = 'Nuevo mensaje desde el formulario de contacto';
 $fields = array('name' => 'Nombre', 'subject' => 'Asunto', 'email' => 'Correo electrónico', 'message' => 'Mensaje');
