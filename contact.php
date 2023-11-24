@@ -3,17 +3,17 @@
 // Configuración
 $from = 'Demo contact form <borgognoni.damian@gmail.com>';
 $sendTo = 'Test contact form <borgognoni.damian@gmail.com>';
-$subject = 'Nuevo mensaje desde el formulario de contacto';
-$fields = array('name' => 'Nombre', 'subject' => 'Asunto', 'email' => 'Correo electrónico', 'message' => 'Mensaje');
-$okMessage = 'El formulario de contacto se envió con éxito. Gracias, nos pondremos en contacto pronto.';
-$errorMessage = 'Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.';
+$subject = 'New message from contact form';
+$fields = array('name' => 'Name', 'subject' => 'Subject', 'email' => 'Email', 'message' => 'Message');
+$okMessage = 'Contact form successfully submitted. Thank you, we will get back to you soon!';
+$errorMessage = 'There was an error while submitting the form. Please try again later.';
 
 // Procesar el formulario
 try {
     // Verificar si es una solicitud POST
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Recopilar los datos del formulario
-        $emailText = "Tienes un nuevo mensaje desde el formulario de contacto\n=============================\n";
+        $emailText = "You have a new message from the contact form\n=============================\n";
 
         foreach ($_POST as $key => $value) {
             if (isset($fields[$key])) {
@@ -33,10 +33,10 @@ try {
         if (mail($sendTo, $subject, $emailText, implode("\n", $headers))) {
             $responseArray = array('type' => 'success', 'message' => $okMessage);
         } else {
-            throw new \Exception('No se pudo enviar el correo.');
+            throw new \Exception('Unable to send email.');
         }
     } else {
-        throw new \Exception('Solicitud no válida');
+        throw new \Exception('Invalid request');
     }
 } catch (\Exception $e) {
     $responseArray = array('type' => 'danger', 'message' => $errorMessage, 'error' => $e->getMessage());
@@ -47,6 +47,8 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     header('Content-Type: application/json');
     echo json_encode($responseArray);
 } else {
-    echo $responseArray['message'];
+    // No imprimir mensajes en la página web
+    // echo $responseArray['message'];
 }
 ?>
+
