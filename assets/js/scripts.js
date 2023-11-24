@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
           var alertBox =
             '<div class="alert ' +
             messageAlert +
-            ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
+            ' alert-dismissable">' +
             messageText +
             "</div>";
 
@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
               .querySelector(".messages");
             messagesContainer.innerHTML = alertBox;
             form.reset();
+
+            // Ocultar el mensaje después de 10 segundos
             setTimeout(function () {
               messagesContainer.innerHTML = "";
             }, 10000);
