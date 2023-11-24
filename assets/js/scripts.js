@@ -19,6 +19,7 @@ window.addEventListener("load", function () {
 
       // Configurar el manejo de la respuesta
       xhr.onreadystatechange = function () {
+        console.log(xhr.responseText);
         if (xhr.readyState == 4 && xhr.status == 200) {
           // Manejar la respuesta del servidor
           var data = JSON.parse(xhr.responseText);

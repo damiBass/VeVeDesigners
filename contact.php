@@ -39,7 +39,7 @@ try {
         throw new \Exception('Solicitud no válida');
     }
 } catch (\Exception $e) {
-    $responseArray = array('type' => 'danger', 'message' => $errorMessage);
+    $responseArray = array('type' => 'danger', 'message' => $errorMessage, 'error' => $e->getMessage());
 }
 
 // Responder a la solicitud Ajax
