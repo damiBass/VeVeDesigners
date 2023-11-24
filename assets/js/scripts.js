@@ -1,40 +1,44 @@
 document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("contact-form")
-    .addEventListener("submit", function (e) {
-      e.preventDefault();
+  var form = document.getElementById("contact-form");
 
-      var formData = new FormData(this);
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "contact.php", true);
+    var formData = new FormData(this);
 
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-          if (xhr.status == 200) {
-            var data = JSON.parse(xhr.responseText);
-            var messageAlert = "alert-" + data.type;
-            var messageText = data.message;
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "contact.php", true);
 
-            var alertBox =
-              '<div class="alert ' +
-              messageAlert +
-              ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
-              messageText +
-              "</div>";
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+          var data = JSON.parse(xhr.responseText);
+          var messageAlert = "alert-" + data.type;
+          var messageText = data.message;
 
-            if (messageAlert && messageText) {
-              document
-                .getElementById("contact-form")
-                .querySelector(".messages").innerHTML = alertBox;
-              document.getElementById("contact-form").reset();
-            }
-          } else {
-            console.error("Error HTTP:", xhr.status);
+          var alertBox =
+            '<div class="alert ' +
+            messageAlert +
+            ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
+            messageText +
+            "</div>";
+
+          if (messageAlert && messageText) {
+            var messagesContainer = document
+              .getElementById("contact-form")
+              .querySelector(".messages");
+            messagesContainer.innerHTML = alertBox;
+            form.reset();
+            setTimeout(function () {
+              messagesContainer.innerHTML = "";
+            }, 10000);
           }
+        } else {
+          console.error("Error HTTP:", xhr.status);
         }
-      };
+      }
+    };
 
-      xhr.send(formData);
-    });
+    xhr.send(formData);
+  });
 });
