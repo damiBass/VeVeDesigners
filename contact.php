@@ -1,48 +1,52 @@
 <?php
 
-// configure
+// Configuración
 $from = 'Demo contact form <demo@domain.com>';
-$sendTo = 'Test contact form <borgognoni.damian@gmail.com>'; // Add Your Email
-$subject = 'New message from contact form';
-$fields = array('name' => 'Name', 'subject' => 'Subject', 'email' => 'Email', 'message' => 'Message'); // array variable name => Text to appear in the email
-$okMessage = 'Contact form successfully submitted. Thank you, I will get back to you soon!';
-$errorMessage = 'There was an error while submitting the form. Please try again later';
+$sendTo = 'Test contact form <borgognoni.damian@gmail.com>';
+$subject = 'Nuevo mensaje desde el formulario de contacto';
+$fields = array('name' => 'Nombre', 'subject' => 'Asunto', 'email' => 'Correo electrónico', 'message' => 'Mensaje');
+$okMessage = 'El formulario de contacto se envió con éxito. Gracias, nos pondremos en contacto pronto.';
+$errorMessage = 'Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.';
 
-// let's do the sending
+// Procesar el formulario
+try {
+    // Verificar si es una solicitud POST
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Recopilar los datos del formulario
+        $emailText = "Tienes un nuevo mensaje desde el formulario de contacto\n=============================\n";
 
-try
-{
-    $emailText = "You have new message from contact form\n=============================\n";
-
-    foreach ($_POST as $key => $value) {
-
-        if (isset($fields[$key])) {
-            $emailText .= "$fields[$key]: $value\n";
+        foreach ($_POST as $key => $value) {
+            if (isset($fields[$key])) {
+                $emailText .= "$fields[$key]: $value\n";
+            }
         }
+
+        // Configurar los encabezados del correo
+        $headers = array(
+            'Content-Type: text/plain; charset="UTF-8";',
+            'From: ' . $from,
+            'Reply-To: ' . $from,
+            'Return-Path: ' . $from,
+        );
+
+        // Enviar el correo
+        if (mail($sendTo, $subject, $emailText, implode("\n", $headers))) {
+            $responseArray = array('type' => 'success', 'message' => $okMessage);
+        } else {
+            throw new \Exception('No se pudo enviar el correo.');
+        }
+    } else {
+        throw new \Exception('Solicitud no válida');
     }
-
-    $headers = array('Content-Type: text/plain; charset="UTF-8";',
-        'From: ' . $from,
-        'Reply-To: ' . $from,
-        'Return-Path: ' . $from,
-    );
-    
-    mail($sendTo, $subject, $emailText, implode("\n", $headers));
-
-    $responseArray = array('type' => 'success', 'message' => $okMessage);
-}
-catch (\Exception $e)
-{
+} catch (\Exception $e) {
     $responseArray = array('type' => 'danger', 'message' => $errorMessage);
 }
 
+// Responder a la solicitud Ajax
 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-    $encoded = json_encode($responseArray);
-
     header('Content-Type: application/json');
-
-    echo $encoded;
-}
-else {
+    echo json_encode($responseArray);
+} else {
     echo $responseArray['message'];
 }
+?>
