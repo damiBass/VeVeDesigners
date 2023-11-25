@@ -1,5 +1,7 @@
 <?php
 
+ini_set("sendmail_path", "/usr/sbin/sendmail -t -i");
+
 $sendTo = 'borgognoni.damian@gmail.com';
 $subject = 'New message from contact form';
 $fields = array('name' => 'Name', 'email' => 'Email', 'subject' => 'Subject', 'message' => 'Message');
