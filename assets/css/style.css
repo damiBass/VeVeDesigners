@@ -5942,8 +5942,7 @@ footer .call-box {
 }
 
 .call-box:hover {
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 2px 2px 3px rgba(255, 255, 255, 0.3);
+  border-color: #d2f053;
 }
 
 footer .call-box h2 {
