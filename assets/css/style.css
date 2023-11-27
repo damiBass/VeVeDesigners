@@ -5938,6 +5938,12 @@ footer .call-box {
   padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 15px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.call-box:hover {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 2px 2px 3px rgba(255, 255, 255, 0.3);
 }
 
 footer .call-box h2 {
@@ -9943,6 +9949,16 @@ header.in-box {
   margin-top: 80px;
   margin-bottom: 73px;
 }
+
+.info-mail {
+  display: flex;
+  justify-content: center;
+}
+
+.info-mail span {
+  color: #d2f053;
+}
+
 /* ====================== [ Start Responsive ] ====================== */
 
 @media screen and (min-width: 300px) {
